@@ -23,6 +23,17 @@ API_HASH = getenv("API_HASH")
 API_ID = int(getenv("API_ID", ""))
 STRING_SESSION = getenv("STRING_SESSION", "") # string session pyrogram
 
+if not API_ID:
+    LOGGER(__name__).error("Bot Berhenti. Silahkan isi var API_ID")
+    sys.exit()
+
+if not API_HASH:
+    LOGGER(__name__).error("Bot Berhenti. Silahkan isi var API_HASH")
+    sys.exit()
+
+if not STRING_SESSION:
+    LOGGER(__name__).error("Bot Berhenti. Silahkan isi var STRING_SESSION dengan string pyrogram")
+    sys.exit()
 
 user = Client(
     name="user",
