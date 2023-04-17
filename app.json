@@ -10,7 +10,7 @@
       "description": "Dapatkan API Hash di web my.telegram.org",
       "required": true
     },
-    "STRING_SESSION1": {
+    "STRING_SESSION": {
       "description": "Dapatkan String Session Pyrogram di Grup » https://t.me/SharingUserbot » Lalu ketik #string",
       "required": true
     }
