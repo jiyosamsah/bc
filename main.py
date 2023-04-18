@@ -1,10 +1,9 @@
 import asyncio
 import logging
 import sys
-from os import environ, execle, getenv
 from datetime import datetime
+from os import environ, execle, getenv
 from secrets import choice
-from threading import Event
 
 from pyrogram import Client, enums, filters
 from pyrogram.errors import (
@@ -21,7 +20,7 @@ list_chat = []
 
 API_HASH = getenv("API_HASH")
 API_ID = int(getenv("API_ID", ""))
-STRING_SESSION = getenv("STRING_SESSION", "") # string session pyrogram
+STRING_SESSION = getenv("STRING_SESSION", "")  # string session pyrogram
 
 user = Client(
     name="user",
@@ -170,6 +169,7 @@ async def delayspam(client: Client, message: Message):
     await client.send_message(
         "me", "**#DELAYSPAM**\nDelaySpam was executed successfully"
     )
+
 
 @user.on_message(filters.command(["restart", "reload"], ".") & filters.me)
 async def restart_bot(_, message: Message):
