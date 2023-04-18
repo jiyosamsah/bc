@@ -32,7 +32,7 @@ user = Client(
 )
 
 SPAM_COUNT = [0]
-msg_limit = "Bot dimatikan\nKarena: akun terkena limit publik [ tidak bisa mengirim pesan di grup publik ]"
+msg_limit = "Bot dimatikan\nKarena: akun terkena limit publik [ tidak bisa mengirim pesan di grup publik ] silahkan cek di @SpamBot"
 
 
 def increment_spam_count():
