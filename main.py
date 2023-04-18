@@ -31,6 +31,7 @@ user = Client(
 )
 
 SPAM_COUNT = [0]
+msg_limit = "Bot dimatikan\nKarena: akun terkena limit publik [ tidak bisa mengirim pesan di grup publik ]"
 
 
 def increment_spam_count():
@@ -121,9 +122,8 @@ async def broadcast_cmd(client: Client, message: Message):
                     await client.send_message(chat, text)
                     await asyncio.sleep(1)
             except UserBannedInChannel:
-                LOGS.error(
-                    "Bot dimatikan\nKarena: akun terkena limit publik [ tidak bisa mengirim pesan di grup publik ]"
-                )
+                LOGS.error(msg_limit)
+                await client.send_message("me", msg_limit)
                 sys.exit()
             except BaseException as e:
                 LOGS.error(e)
@@ -156,9 +156,8 @@ async def delayspam(client: Client, message: Message):
             await asyncio.sleep(e.value)
             await delayspam.copy(message.chat.id)
         except UserBannedInChannel:
-            LOGS.error(
-                "Bot dimatikan\nKarena: akun terkena limit publik [ tidak bisa mengirim pesan di grup publik ]"
-            )
+            LOGS.error(msg_limit)
+            await client.send_message("me", msg_limit)
             sys.exit()
         except BaseException as e:
             LOGS.info(e)
