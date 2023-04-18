@@ -174,7 +174,7 @@ async def delayspam(client: Client, message: Message):
 @user.on_message(filters.command(["restart", "reload"], ".") & filters.me)
 async def restart_bot(_, message: Message):
     msg = await message.edit("`Restarting bot...`")
-    LOGGER(__name__).info("BOT SERVER RESTARTED !!")
+    LOGS.info("BOT SERVER RESTARTED !!")
     await msg.edit_text("✅ Bot has restarted !\n\n")
     args = [sys.executable, "main.py"]
     execle(sys.executable, *args, environ)
