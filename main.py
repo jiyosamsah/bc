@@ -143,10 +143,9 @@ async def delayspam(client: Client, message: Message):
     if not spam_allowed():
         return
 
-    delaySpamEvent = Event()
     for i in range(0, count):
         if i != 0:
-            delaySpamEvent.wait(delay)
+            await asyncio.sleep(delay)
         try:
             await delayspam.copy(message.chat.id)
         except FloodWait as e:
