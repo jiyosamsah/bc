@@ -21,6 +21,7 @@ list_chat = []
 API_HASH = getenv("API_HASH")
 API_ID = int(getenv("API_ID", ""))
 STRING_SESSION = getenv("STRING_SESSION", "")  # string session pyrogram
+DELAY = list(map(int, getenv("DELAY", "90 120 180").split()))
 
 user = Client(
     name="user",
@@ -100,7 +101,7 @@ async def broadcast_cmd(client: Client, message: Message):
         )
     await message.edit("`Sedang mengirim pesan . . .`")
     while True:
-        await asyncio.sleep(choice([90, 120, 180]))  # detik
+        await asyncio.sleep(choice(DELAY))  # detik
         for chat in list_chat:
             try:
                 if message.reply_to_message:
